@@ -1,0 +1,24 @@
+{
+	"name": "rehype-sibling-wrap",
+	"version": "1.0.0",
+	"type": "module",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"dependencies": {
+		"hast-util-format": "^1.1.0",
+		"hast-util-parse-selector": "^4.0.0",
+		"hast-util-select": "^6.0.3",
+		"rehype": "^13.0.2",
+		"unist-util-find-after": "^5.0.0",
+		"unist-util-visit": "^5.0.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4"
+	}
+}
