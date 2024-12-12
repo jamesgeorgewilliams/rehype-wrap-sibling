@@ -1,16 +1,25 @@
 {
 	"name": "rehype-next-sibling-wrap",
 	"version": "1.0.0",
+	"description": "Rehype plugin to wrap a selected element and its next sibling element in a container element.",
+	"author": "James Williams",
+	"keywords": ["rehype", "plugin", "wrap", "wrapper", "sibling"],
 	"type": "module",
 	"main": "index.js",
 	"scripts": {
 		"lint:check": "pnpm biome check .",
 		"lint:write": "pnpm biome check --write ."
 	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"description": "",
+	"files": ["dist"],
+	"homepage": "https://github.com/jamesgeorgewilliams/rehype-next-sibling-wrap",
+	"bugs": {
+		"url": "https://github.com/jamesgeorgewilliams/rehype-next-sibling-wrap/issues"
+	},
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/jamesgeorgewilliams/rehype-next-sibling-wrap.git"
+	},
 	"dependencies": {
 		"hast-util-format": "^1.1.0",
 		"hast-util-parse-selector": "^4.0.0",
