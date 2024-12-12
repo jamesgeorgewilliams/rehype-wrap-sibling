@@ -3,10 +3,19 @@
 	"version": "1.0.0",
 	"description": "Rehype plugin to wrap a selected element and its next sibling element in a container element.",
 	"author": "James Williams",
-	"keywords": ["rehype", "plugin", "wrap", "wrapper", "sibling"],
+	"keywords": [
+		"rehype",
+		"plugin",
+		"rehype-plugin",
+		"wrap",
+		"wrapper",
+		"sibling"
+	],
 	"type": "module",
 	"main": "index.js",
 	"scripts": {
+		"build": "tsc",
+		"ci": "npm run build & npm run lint:check",
 		"lint:check": "pnpm biome check .",
 		"lint:write": "pnpm biome check --write ."
 	},
@@ -29,6 +38,7 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^1.9.4",
-		"rehype": "^13.0.2"
+		"rehype": "^13.0.2",
+		"typescript": "^5.7.2"
 	}
 }
