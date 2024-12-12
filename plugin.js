@@ -1,8 +1,8 @@
-import { visit } from 'unist-util-visit';
-import { parseSelector } from 'hast-util-parse-selector';
 import { format } from 'hast-util-format';
+import { parseSelector } from 'hast-util-parse-selector';
 import { selectAll } from 'hast-util-select';
 import { findAfter } from 'unist-util-find-after';
+import { visit } from 'unist-util-visit';
 
 function transform(tree, selector, wrapper) {
 	const selectedElements = selectAll(selector, tree);
