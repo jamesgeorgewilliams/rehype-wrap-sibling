@@ -12,15 +12,16 @@
 		"sibling"
 	],
 	"type": "module",
-	"main": "dist/index.js",
+	"main": "dist/lib/index.js",
 	"scripts": {
-		"build": "tsc",
+		"build": "tsc --project tsconfig.build.json",
 		"ci": "npm run build && npm run lint:check && npm run check:exports",
+		"test": "vitest run",
 		"lint:check": "pnpm biome check .",
 		"lint:write": "pnpm biome check --write .",
 		"check:exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm"
 	},
-	"files": ["dist"],
+	"files": ["dist/lib"],
 	"homepage": "https://github.com/jamesgeorgewilliams/rehype-next-sibling-wrap",
 	"bugs": {
 		"url": "https://github.com/jamesgeorgewilliams/rehype-next-sibling-wrap/issues"
@@ -41,6 +42,7 @@
 		"@arethetypeswrong/cli": "^0.17.1",
 		"@biomejs/biome": "^1.9.4",
 		"rehype": "^13.0.2",
-		"typescript": "^5.7.2"
+		"typescript": "^5.7.2",
+		"vitest": "^2.1.8"
 	}
 }
