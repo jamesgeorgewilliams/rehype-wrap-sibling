@@ -12,12 +12,13 @@
 		"sibling"
 	],
 	"type": "module",
-	"main": "index.js",
+	"main": "dist/index.js",
 	"scripts": {
 		"build": "tsc",
-		"ci": "npm run build & npm run lint:check",
+		"ci": "npm run build && npm run lint:check && npm run check:exports",
 		"lint:check": "pnpm biome check .",
-		"lint:write": "pnpm biome check --write ."
+		"lint:write": "pnpm biome check --write .",
+		"check:exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm"
 	},
 	"files": ["dist"],
 	"homepage": "https://github.com/jamesgeorgewilliams/rehype-next-sibling-wrap",
@@ -37,6 +38,7 @@
 		"unist-util-visit": "^5.0.0"
 	},
 	"devDependencies": {
+		"@arethetypeswrong/cli": "^0.17.1",
 		"@biomejs/biome": "^1.9.4",
 		"rehype": "^13.0.2",
 		"typescript": "^5.7.2"
