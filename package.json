@@ -17,6 +17,7 @@
 		"build": "tsc --project tsconfig.build.json",
 		"ci": "npm run build && npm run lint:check && npm run check:exports",
 		"test": "vitest run",
+		"test:watch": "vitest",
 		"lint:check": "npm biome check .",
 		"lint:write": "npm biome check --write .",
 		"check:exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm"
