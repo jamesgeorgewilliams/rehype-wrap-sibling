@@ -15,7 +15,7 @@
 	"main": "dist/lib/index.js",
 	"scripts": {
 		"build": "tsc --project tsconfig.build.json",
-		"ci": "npm run build && npm run lint:check && npm run check:exports",
+		"ci": "npm run build && npm run lint:check && npm run check:exports && npm run test",
 		"test": "vitest run",
 		"test:watch": "vitest",
 		"lint:check": "npm biome check .",
