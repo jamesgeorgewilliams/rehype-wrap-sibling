@@ -30,12 +30,17 @@ const rehypeNextSiblingWrap = (options) => {
 						parent.children[i] = wrap;
 
 						// Subsequent node types can possibly be 'text' or 'comment'
-						parent.children.some((node, index) => {
-							if (index > i && node.type === 'element') {
+						for (
+							let index = i + 1;
+							index < parent.children.length;
+							index++
+						) {
+							const node = parent.children[index];
+							if (node.type === 'element') {
 								parent.children.splice(index, 1);
-								return true;
+								break;
 							}
-						});
+						}
 					}
 				}
 			});
