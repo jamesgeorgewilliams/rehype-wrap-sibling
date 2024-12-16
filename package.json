@@ -19,7 +19,7 @@
 	"main": "dist/lib/index.js",
 	"types": "dist/lib/index.d.ts",
 	"scripts": {
-		"build": "tsc",
+		"build": "tsc --project tsconfig.build.json",
 		"ci": "npm run build && npm run lint:check && npm run check:exports && npm run test",
 		"test": "vitest run",
 		"test:watch": "vitest",

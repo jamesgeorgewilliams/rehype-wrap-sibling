@@ -5,8 +5,8 @@
 		"strict": true,
 		"declaration": true,
 		"outDir": "dist",
-		"rootDir": "."
+		"rootDir": ".",
+		"skipLibCheck": true
 	},
-	"include": ["lib/**/*", "test/**/*"],
-	"exclude": ["test/**/*.test.ts", "test/**/*.spec.ts"]
+	"include": ["lib/**/*", "test/**/*"]
 }
