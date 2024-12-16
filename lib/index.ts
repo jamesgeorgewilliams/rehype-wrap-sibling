@@ -1,14 +1,23 @@
+import type { Parent, Root } from 'hast';
 import { format } from 'hast-util-format';
 import { parseSelector } from 'hast-util-parse-selector';
 import { selectAll } from 'hast-util-select';
+import type { Plugin } from 'unified';
 import { findAfter } from 'unist-util-find-after';
 import { visit } from 'unist-util-visit';
 
-const rehypeNextSiblingWrap = (options) => {
+interface rehypeNextSiblingWrapOptions {
+	selector: string;
+	wrapper?: string;
+}
+
+const rehypeNextSiblingWrap: Plugin<[rehypeNextSiblingWrapOptions], Root> = (
+	options,
+) => {
 	const selector = options.selector;
 	const wrapper = options.wrapper ?? 'div';
 
-	return (tree) => {
+	return (tree: Root) => {
 		if (typeof selector !== 'string') {
 			throw new TypeError('Expected a `string` as selector');
 		}
@@ -20,9 +29,13 @@ const rehypeNextSiblingWrap = (options) => {
 
 		for (const element of selectedElements) {
 			visit(tree, element, (_node, i, parent) => {
-				const elementSibling = findAfter(parent, element, 'element');
+				const elementSibling = findAfter(
+					parent as Parent,
+					element,
+					'element',
+				);
 
-				if (elementSibling !== undefined) {
+				if (elementSibling !== undefined && parent !== undefined) {
 					const wrap = parseSelector(wrapper);
 					wrap.children = [element, elementSibling];
 
