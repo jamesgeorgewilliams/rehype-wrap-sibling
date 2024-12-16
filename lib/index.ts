@@ -1,5 +1,4 @@
 import type { Parent, Root } from 'hast';
-import { format } from 'hast-util-format';
 import { parseSelector } from 'hast-util-parse-selector';
 import { selectAll } from 'hast-util-select';
 import type { Plugin } from 'unified';
@@ -35,22 +34,25 @@ const rehypeNextSiblingWrap: Plugin<[rehypeNextSiblingWrapOptions], Root> = (
 					'element',
 				);
 
-				if (elementSibling !== undefined && parent !== undefined) {
+				if (elementSibling !== undefined) {
 					const wrap = parseSelector(wrapper);
 					wrap.children = [element, elementSibling];
 
-					if (i) {
+					if (parent && i !== undefined) {
 						parent.children[i] = wrap;
 
-						// Subsequent node types can possibly be 'text' or 'comment'
+						let deleteCount = 1;
 						for (
 							let index = i + 1;
 							index < parent.children.length;
 							index++
 						) {
 							const node = parent.children[index];
+
+							deleteCount++;
+
 							if (node.type === 'element') {
-								parent.children.splice(index, 1);
+								parent.children.splice(i + 1, deleteCount);
 								break;
 							}
 						}
@@ -58,8 +60,6 @@ const rehypeNextSiblingWrap: Plugin<[rehypeNextSiblingWrapOptions], Root> = (
 				}
 			});
 		}
-
-		format(tree);
 	};
 };
 

@@ -39,7 +39,6 @@
 	},
 	"dependencies": {
 		"@types/hast": "^3.0.4",
-		"hast-util-format": "^1.1.0",
 		"hast-util-parse-selector": "^4.0.0",
 		"hast-util-select": "^6.0.3",
 		"unified": "^11.0.5",
@@ -50,6 +49,8 @@
 		"@arethetypeswrong/cli": "^0.17.1",
 		"@biomejs/biome": "^1.9.4",
 		"rehype": "^13.0.2",
+		"rehype-parse": "^9.0.1",
+		"rehype-stringify": "^10.0.1",
 		"typescript": "^5.7.2",
 		"vitest": "^2.1.8"
 	}
