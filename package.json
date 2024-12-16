@@ -9,7 +9,11 @@
 		"rehype-plugin",
 		"wrap",
 		"wrapper",
-		"sibling"
+		"container",
+		"sibling",
+		"next-sibling",
+		"hast",
+		"unified"
 	],
 	"type": "module",
 	"main": "dist/lib/index.js",
