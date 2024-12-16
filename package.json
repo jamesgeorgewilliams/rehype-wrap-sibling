@@ -13,6 +13,7 @@
 	],
 	"type": "module",
 	"main": "dist/lib/index.js",
+	"types": "dist/lib/index.d.ts",
 	"scripts": {
 		"build": "tsc",
 		"ci": "npm run build && npm run lint:check && npm run check:exports && npm run test",

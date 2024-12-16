@@ -17,7 +17,7 @@ const rehypeNextSiblingWrap: Plugin<[rehypeNextSiblingWrapOptions], Root> = (
 	const selector = options.selector;
 	const wrapper = options.wrapper ?? 'div';
 
-	return (tree: Root) => {
+	return (tree) => {
 		if (typeof selector !== 'string') {
 			throw new TypeError('Expected a `string` as selector');
 		}
