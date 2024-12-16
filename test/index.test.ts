@@ -1,10 +1,9 @@
-// import * as fs from 'node:fs/promises';
-import { unified } from 'unified';
-import { rehype } from 'rehype';
 import rehypeParse from 'rehype-parse';
 import rehypeStringify from 'rehype-stringify';
+import { unified } from 'unified';
 import { assert, expect, test } from 'vitest';
-import rehypeNextSiblingWrap from '../dist/lib/index.js';
+// importing with .js extension to conform with node spec
+import rehypeNextSiblingWrap from '../lib/index.js';
 
 const transformHTML = (
 	plugin: typeof rehypeNextSiblingWrap,
