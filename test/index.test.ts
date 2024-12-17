@@ -64,7 +64,22 @@ test("throw an error if user doesn't provide a selector option", async () => {
 	).toThrowError('Expected a `string` as selector');
 });
 
-test("the default wrapper option is a div if the user doesn't provide one", async () => {
+test("a container is not added to elements that don't have a sibling", async () => {
+	const inputHTML = '<h1>Lorem</h1>';
+	const expectedHTML = '<h1>Lorem</h1>';
+
+	const result = transformHTML(
+		rehypeNextSiblingWrap,
+		{
+			selector: 'h1',
+		},
+		inputHTML,
+	);
+
+	expect(result.value).toBe(expectedHTML);
+});
+
+test('a container is added to elements that have a sibling', async () => {
 	const inputHTML = '<h1>Lorem</h1><h2>Ipsum</h2>';
 	const expectedHTML = '<div><h1>Lorem</h1><h2>Ipsum</h2></div>';
 
@@ -72,6 +87,23 @@ test("the default wrapper option is a div if the user doesn't provide one", asyn
 		rehypeNextSiblingWrap,
 		{
 			selector: 'h1',
+		},
+		inputHTML,
+	);
+
+	expect(result.value).toBe(expectedHTML);
+});
+
+test('a provided user class in the wrapper option is added to the container', async () => {
+	const inputHTML = '<h1>Lorem</h1><h2>Ipsum</h2>';
+	const expectedHTML =
+		'<div class="container"><h1>Lorem</h1><h2>Ipsum</h2></div>';
+
+	const result = transformHTML(
+		rehypeNextSiblingWrap,
+		{
+			selector: 'h1',
+			wrapper: 'div.container',
 		},
 		inputHTML,
 	);
