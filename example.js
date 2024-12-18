@@ -6,7 +6,10 @@ const document = await fs.readFile('./static/input.html', 'utf8');
 
 const file = await rehype()
 	.data('settings', { fragment: true })
-	.use(rehypeNextSiblingWrap, { selector: 'h1', wrapper: 'div.container' })
+	.use(rehypeNextSiblingWrap, {
+		selector: 'h1',
+		wrapper: 'hgroup#document-title',
+	})
 	.process(document);
 
 await fs.writeFile('./static/output.html', String(file));
