@@ -25,7 +25,8 @@
 		"test:watch": "vitest",
 		"lint:check": "npx biome check .",
 		"lint:write": "npx biome check --write .",
-		"check:exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm"
+		"check:exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
+		"static": "node example.js"
 	},
 	"files": ["dist/lib"],
 	"homepage": "https://github.com/jamesgeorgewilliams/rehype-next-sibling-wrap",
