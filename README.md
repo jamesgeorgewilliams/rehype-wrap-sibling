@@ -55,4 +55,4 @@ If no wrapper option is provided by the user, the default container element will
 
 ## License
 
-[MIT](./LICENSE) :tm: James Williams
+[MIT](./LICENSE) :copyright: James Williams
