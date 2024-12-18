@@ -1,7 +1,7 @@
 import rehypeParse from 'rehype-parse';
 import rehypeStringify from 'rehype-stringify';
 import { unified } from 'unified';
-import { assert, expect, test } from 'vitest';
+import { expect, test } from 'vitest';
 // importing with .js extension to conform with node spec
 import rehypeNextSiblingWrap from '../lib/index.js';
 
@@ -104,6 +104,22 @@ test('a provided user class in the wrapper option is added to the container', as
 		{
 			selector: 'h1',
 			wrapper: 'div.container',
+		},
+		inputHTML,
+	);
+
+	expect(result.value).toBe(expectedHTML);
+});
+
+test('a HTML comment between siblings is removed, and container is applied correctly', async () => {
+	const inputHTML = '<h1>Lorem</h1><!-- HTML comment --><h2>Ipsum</h2>';
+	const expectedHTML = '<div><h1>Lorem</h1><h2>Ipsum</h2></div>';
+
+	const result = transformHTML(
+		rehypeNextSiblingWrap,
+		{
+			selector: 'h1',
+			wrapper: 'div',
 		},
 		inputHTML,
 	);
