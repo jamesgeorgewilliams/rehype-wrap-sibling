@@ -111,6 +111,23 @@ test('a provided user class in the wrapper option is added to the container', as
 	expect(result.value).toBe(expectedHTML);
 });
 
+test('a provided user class in the selector targets the correct element', async () => {
+	const inputHTML = '<h1 class="heading">Lorem</h1><h2>Ipsum</h2>';
+	const expectedHTML =
+		'<div><h1 class="heading">Lorem</h1><h2>Ipsum</h2></div>';
+
+	const result = transformHTML(
+		rehypeNextSiblingWrap,
+		{
+			selector: '.heading',
+			wrapper: 'div',
+		},
+		inputHTML,
+	);
+
+	expect(result.value).toBe(expectedHTML);
+});
+
 test('a HTML comment between siblings is removed, and container is applied correctly', async () => {
 	const inputHTML = '<h1>Lorem</h1><!-- HTML comment --><h2>Ipsum</h2>';
 	const expectedHTML = '<div><h1>Lorem</h1><h2>Ipsum</h2></div>';
