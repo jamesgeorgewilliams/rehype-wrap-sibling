@@ -128,7 +128,7 @@ test('a provided user class in the selector targets the correct element', async 
 	expect(result.value).toBe(expectedHTML);
 });
 
-test('a HTML comment between siblings is removed, and container is applied correctly', async () => {
+test('a HTML comment between siblings is removed, and the elements are wrapped', async () => {
 	const inputHTML = '<h1>Lorem</h1><!-- HTML comment --><h2>Ipsum</h2>';
 	const expectedHTML = '<div><h1>Lorem</h1><h2>Ipsum</h2></div>';
 
@@ -137,6 +137,42 @@ test('a HTML comment between siblings is removed, and container is applied corre
 		{
 			selector: 'h1',
 			wrapper: 'div',
+		},
+		inputHTML,
+	);
+
+	expect(result.value).toBe(expectedHTML);
+});
+
+test('multiple selected elements and their respective siblings are wrapped', async () => {
+	const inputHTML = `<figcaption><cite>Venus and Adonis</cite>, by William Shakespeare</figcaption>
+<p>
+	Bid me discourse, I will enchant thine ear, Or like a fairy trip upon the
+	green, Or, like a nymph, with long dishevelled hair, Dance on the sands, and
+	yet no footing seen: Love is a spirit all compact of fire, Not gross to
+	sink, but light, and will aspire.
+</p>
+<figcaption><b>Edsger Dijkstra:</b></figcaption>
+<blockquote>
+	If debugging is the process of removing software bugs, then programming must
+	be the process of putting them in.
+</blockquote>`;
+
+	const expectedHTML = `<figure><figcaption><cite>Venus and Adonis</cite>, by William Shakespeare</figcaption><p>
+	Bid me discourse, I will enchant thine ear, Or like a fairy trip upon the
+	green, Or, like a nymph, with long dishevelled hair, Dance on the sands, and
+	yet no footing seen: Love is a spirit all compact of fire, Not gross to
+	sink, but light, and will aspire.
+</p></figure><figure><figcaption><b>Edsger Dijkstra:</b></figcaption><blockquote>
+	If debugging is the process of removing software bugs, then programming must
+	be the process of putting them in.
+</blockquote></figure>`;
+
+	const result = transformHTML(
+		rehypeNextSiblingWrap,
+		{
+			selector: 'figcaption',
+			wrapper: 'figure',
 		},
 		inputHTML,
 	);

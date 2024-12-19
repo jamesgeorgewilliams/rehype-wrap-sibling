@@ -7,8 +7,8 @@ const document = await fs.readFile('./static/input.html', 'utf8');
 const file = await rehype()
 	.data('settings', { fragment: true })
 	.use(rehypeNextSiblingWrap, {
-		selector: 'h1',
-		wrapper: 'hgroup#document-title',
+		selector: '.paragraph',
+		wrapper: 'div.wrapper',
 	})
 	.process(document);
 
