@@ -46,12 +46,16 @@ await fs.writeFile('./output.html', String(file));
 
 ### Options
 
-option|type|*
+Name | Type | Description
 ---|---|---
-selector | string | required
-wrapper | string | optional
+selector | string | CSS selector to select an element(s)
+wrapper| string? | Element to wrap the selected element and its next sibling
 
-If no wrapper option is provided by the user, the default container element will be `<div></div>`.
+- If no `wrapper` option is provided by the user, the default container element will be `<div></div>`.
+- The `selector` option can be a CSS selector supported
+via [hast-util-select](https://github.com/syntax-tree/hast-util-select?tab=readme-ov-file#support)
+- The `wrapper` option can be a selector supported
+via [hast-util-parse-selector](https://github.com/syntax-tree/hast-util-parse-selector/blob/main/readme.md#parameters)
 
 ## License
 
