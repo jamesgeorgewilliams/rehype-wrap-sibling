@@ -1,5 +1,7 @@
 # rehype-next-sibling-wrap
 
+![build](https://github.com/jamesgeorgewilliams/rehype-next-sibling-wrap/workflows/main/badge.svg)
+
 A [rehype](https://github.com/rehypejs/rehype?tab=readme-ov-file#plugins) plugin to wrap a selected element and its
 next sibling element in a container element.
 
