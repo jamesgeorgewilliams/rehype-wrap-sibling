@@ -5,6 +5,7 @@ next sibling element in a container element.
 
 - The plugin will wrap all occurrences of the provided selector and its next sibling if one exists.
 - HTML comments between the selected element and its next sibling element will not be preserved.
+- The plugin does not prettify output. Whitespace and line endings are not inserted, etc.
 
 ## Installation
 
@@ -32,13 +33,14 @@ const file = await rehype()
 await fs.writeFile('./output.html', String(file));
 ```
 
-#### Input
+#### input.html
 
 ```
-<h1>HTML: Living Standard</h1><p>Last Updated: 16 July 2022</p>
+<h1>HTML: Living Standard</h1>
+<p>Last Updated: 16 July 2022</p>
 ```
 
-#### Output
+#### output.html
 
 ```
 <hgroup id="document-title"><h1>HTML: Living Standard</h1><p>Last Updated: 16 July 2022</p></hgroup>
