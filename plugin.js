@@ -2,7 +2,7 @@ import { parseSelector } from 'hast-util-parse-selector';
 import { selectAll } from 'hast-util-select';
 import { findAfter } from 'unist-util-find-after';
 import { visit } from 'unist-util-visit';
-const rehypeNextSiblingWrap = (options) => {
+const rehypeSiblingWrap = (options) => {
 	const selector = options.selector;
 	const wrapper = options.wrapper ?? 'div';
 	return (tree) => {
@@ -40,4 +40,4 @@ const rehypeNextSiblingWrap = (options) => {
 		}
 	};
 };
-export default rehypeNextSiblingWrap;
+export default rehypeSiblingWrap;

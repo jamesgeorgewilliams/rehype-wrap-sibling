@@ -5,12 +5,12 @@ import type { Plugin } from 'unified';
 import { findAfter } from 'unist-util-find-after';
 import { visit } from 'unist-util-visit';
 
-interface rehypeNextSiblingWrapOptions {
+interface rehypeSiblingWrapOptions {
 	selector: string;
 	wrapper?: string;
 }
 
-const rehypeNextSiblingWrap: Plugin<[rehypeNextSiblingWrapOptions], Root> = (
+const rehypeSiblingWrap: Plugin<[rehypeSiblingWrapOptions], Root> = (
 	options,
 ) => {
 	const selector = options.selector;
@@ -63,4 +63,4 @@ const rehypeNextSiblingWrap: Plugin<[rehypeNextSiblingWrapOptions], Root> = (
 	};
 };
 
-export default rehypeNextSiblingWrap;
+export default rehypeSiblingWrap;

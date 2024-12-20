@@ -1,5 +1,5 @@
 {
-	"name": "rehype-next-sibling-wrap",
+	"name": "rehype-sibling-wrap",
 	"version": "1.0.0",
 	"description": "Rehype plugin to wrap a selected element and its next sibling element in a container element.",
 	"author": "James Williams (https://jameswilliams.dev)",
@@ -29,14 +29,14 @@
 		"static": "node example.js"
 	},
 	"files": ["dist/lib"],
-	"homepage": "https://github.com/jamesgeorgewilliams/rehype-next-sibling-wrap",
+	"homepage": "https://github.com/jamesgeorgewilliams/rehype-sibling-wrap",
 	"bugs": {
-		"url": "https://github.com/jamesgeorgewilliams/rehype-next-sibling-wrap/issues"
+		"url": "https://github.com/jamesgeorgewilliams/rehype-sibling-wrap/issues"
 	},
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/jamesgeorgewilliams/rehype-next-sibling-wrap.git"
+		"url": "git+https://github.com/jamesgeorgewilliams/rehype-sibling-wrap.git"
 	},
 	"dependencies": {
 		"@types/hast": "^3.0.4",
