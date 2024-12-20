@@ -1,18 +1,18 @@
-# rehype-next-sibling-wrap
+# rehype-sibling-wrap
 
-![build](https://github.com/jamesgeorgewilliams/rehype-next-sibling-wrap/workflows/main/badge.svg)
+![build](https://github.com/jamesgeorgewilliams/rehype-sibling-wrap/workflows/main/badge.svg)
 
 A [rehype](https://github.com/rehypejs/rehype?tab=readme-ov-file#plugins) plugin to wrap a selected element and its
-next sibling element in a container element.
+sibling in a container element.
 
-- The plugin will wrap all occurrences of the provided selector and its next sibling if one exists.
-- HTML comments between the selected element and its next sibling element will not be preserved.
+- The plugin will wrap all occurrences of the provided selector and its sibling if one exists.
+- HTML comments between the selected element and its sibling element will not be preserved.
 - The plugin does not prettify output. Whitespace and line endings are not inserted, etc.
 
 ## Installation
 
 ```
-npm i rehype-next-sibling-wrap
+npm i rehype-sibling-wrap
 ```
 
 ## Usage
@@ -20,13 +20,13 @@ npm i rehype-next-sibling-wrap
 ```
 import * as fs from 'node:fs/promises';
 import { rehype } from 'rehype';
-import rehypeNextSiblingWrap from 'rehype-next-sibling-wrap';
+import rehypeSiblingWrap from 'rehype-sibling-wrap';
 
 const document = await fs.readFile('./input.html', 'utf8');
 
 const file = await rehype()
 	.data('settings', { fragment: true })
-	.use(rehypeNextSiblingWrap, {
+	.use(rehypeSiblingWrap, {
 		selector: 'h1',
 		wrapper: 'hgroup#document-title',
 	})
