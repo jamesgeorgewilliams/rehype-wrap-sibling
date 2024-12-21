@@ -7,7 +7,7 @@ import rehypeSiblingWrap from '../lib/index.js';
 
 const transformHTML = (
 	plugin: typeof rehypeSiblingWrap,
-	options: { selector: string; wrapper?: string },
+	options: { selector: string; wrapper?: string; previous?: boolean },
 	html: string,
 ) => {
 	return unified()
@@ -173,6 +173,38 @@ test('multiple selected elements and their respective siblings are wrapped', asy
 		{
 			selector: 'figcaption',
 			wrapper: 'figure',
+		},
+		inputHTML,
+	);
+
+	expect(result.value).toBe(expectedHTML);
+});
+
+test("a container is not added to elements that don't have a previous sibling", async () => {
+	const inputHTML = '<h1>Lorem</h1>';
+	const expectedHTML = '<h1>Lorem</h1>';
+
+	const result = transformHTML(
+		rehypeSiblingWrap,
+		{
+			selector: 'h1',
+			previous: true,
+		},
+		inputHTML,
+	);
+
+	expect(result.value).toBe(expectedHTML);
+});
+
+test('a container is added to elements that have a previous sibling', async () => {
+	const inputHTML = '<h1>Lorem</h1><h2>Ipsum</h2>';
+	const expectedHTML = '<div><h1>Lorem</h1><h2>Ipsum</h2></div>';
+
+	const result = transformHTML(
+		rehypeSiblingWrap,
+		{
+			selector: 'h2',
+			previous: true,
 		},
 		inputHTML,
 	);

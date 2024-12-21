@@ -44,6 +44,7 @@
 		"hast-util-select": "^6.0.3",
 		"unified": "^11.0.5",
 		"unist-util-find-after": "^5.0.0",
+		"unist-util-find-before": "^4.0.0",
 		"unist-util-visit": "^5.0.0"
 	},
 	"devDependencies": {
