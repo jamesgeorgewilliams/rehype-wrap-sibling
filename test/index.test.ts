@@ -183,7 +183,8 @@ test('multiple selected elements and their respective siblings are wrapped', asy
 	green, Or, like a nymph, with long dishevelled hair, Dance on the sands, and
 	yet no footing seen: Love is a spirit all compact of fire, Not gross to
 	sink, but light, and will aspire.
-</p></figure><figure><figcaption><b>Edsger Dijkstra:</b></figcaption><blockquote>
+</p></figure>
+<figure><figcaption><b>Edsger Dijkstra:</b></figcaption><blockquote>
 	If debugging is the process of removing software bugs, then programming must
 	be the process of putting them in.
 </blockquote></figure>`;

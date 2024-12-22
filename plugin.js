@@ -53,7 +53,7 @@ const rehypeSiblingWrap = (options) => {
 						wrap.children = [element, elementSibling];
 						if (parent && i !== undefined) {
 							parent.children[i] = wrap;
-							let deleteCount = 1;
+							let deleteCount = 0;
 							for (
 								let index = i + 1;
 								index < parent.children.length;
