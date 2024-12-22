@@ -49,6 +49,22 @@ test('throw an error if the user provided wrapper is not a string', async () => 
 	).toThrowError('Expected a `string` as wrapper');
 });
 
+test('throw an error if the user provided previous option is not a boolean', async () => {
+	const inputHTML = '<h1>Lorem</h1>';
+
+	expect(() =>
+		transformHTML(
+			rehypeSiblingWrap,
+			{
+				selector: 'h1',
+				//@ts-ignore
+				previous: 1,
+			},
+			inputHTML,
+		),
+	).toThrowError('Expected a `boolean` as previous');
+});
+
 test("throw an error if user doesn't provide a selector option", async () => {
 	const inputHTML = '<h1>Lorem</h1>';
 
@@ -204,6 +220,44 @@ test('a container is added to elements that have a previous sibling', async () =
 		rehypeSiblingWrap,
 		{
 			selector: 'h2',
+			previous: true,
+		},
+		inputHTML,
+	);
+
+	expect(result.value).toBe(expectedHTML);
+});
+
+test('multiple selected elements and their previous siblings are wrapped', async () => {
+	const inputHTML = `<p>
+	Bid me discourse, I will enchant thine ear, Or like a fairy trip upon the
+	green, Or, like a nymph, with long dishevelled hair, Dance on the sands, and
+	yet no footing seen: Love is a spirit all compact of fire, Not gross to
+	sink, but light, and will aspire.
+</p>
+<figcaption><cite>Venus and Adonis</cite>, by William Shakespeare</figcaption>
+<blockquote>
+	If debugging is the process of removing software bugs, then programming must
+	be the process of putting them in.
+</blockquote>
+<figcaption><b>Edsger Dijkstra:</b></figcaption>`;
+
+	const expectedHTML = `<figure><p>
+	Bid me discourse, I will enchant thine ear, Or like a fairy trip upon the
+	green, Or, like a nymph, with long dishevelled hair, Dance on the sands, and
+	yet no footing seen: Love is a spirit all compact of fire, Not gross to
+	sink, but light, and will aspire.
+</p><figcaption><cite>Venus and Adonis</cite>, by William Shakespeare</figcaption></figure>
+<figure><blockquote>
+	If debugging is the process of removing software bugs, then programming must
+	be the process of putting them in.
+</blockquote><figcaption><b>Edsger Dijkstra:</b></figcaption></figure>`;
+
+	const result = transformHTML(
+		rehypeSiblingWrap,
+		{
+			selector: 'figcaption',
+			wrapper: 'figure',
 			previous: true,
 		},
 		inputHTML,
