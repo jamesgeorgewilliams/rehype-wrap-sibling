@@ -6,7 +6,7 @@ import { visit } from 'unist-util-visit';
 const rehypeSiblingWrap = (options) => {
 	const selector = options.selector;
 	const wrapper = options.wrapper ?? 'div';
-	const previous = options.previous ?? false;
+	const wrapPreviousSibling = options.wrapPreviousSibling ?? false;
 	return (tree) => {
 		if (typeof selector !== 'string') {
 			throw new TypeError('Expected a `string` as selector');
@@ -14,13 +14,13 @@ const rehypeSiblingWrap = (options) => {
 		if (typeof wrapper !== 'string') {
 			throw new TypeError('Expected a `string` as wrapper');
 		}
-		if (typeof previous !== 'boolean') {
-			throw new TypeError('Expected a `boolean` as previous');
+		if (typeof wrapPreviousSibling !== 'boolean') {
+			throw new TypeError('Expected a `boolean` as wrapPreviousSibling');
 		}
 		const selectedElements = selectAll(selector, tree);
 		for (const element of selectedElements) {
 			visit(tree, element, (_node, i, parent) => {
-				if (previous) {
+				if (wrapPreviousSibling) {
 					const previousSibling = findBefore(
 						parent,
 						element,

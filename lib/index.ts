@@ -9,7 +9,7 @@ import { visit } from 'unist-util-visit';
 interface rehypeSiblingWrapOptions {
 	selector: string;
 	wrapper?: string;
-	previous?: boolean;
+	wrapPreviousSibling?: boolean;
 }
 
 const rehypeSiblingWrap: Plugin<[rehypeSiblingWrapOptions], Root> = (
@@ -17,7 +17,7 @@ const rehypeSiblingWrap: Plugin<[rehypeSiblingWrapOptions], Root> = (
 ) => {
 	const selector = options.selector;
 	const wrapper = options.wrapper ?? 'div';
-	const previous = options.previous ?? false;
+	const wrapPreviousSibling = options.wrapPreviousSibling ?? false;
 
 	return (tree) => {
 		if (typeof selector !== 'string') {
@@ -26,15 +26,15 @@ const rehypeSiblingWrap: Plugin<[rehypeSiblingWrapOptions], Root> = (
 		if (typeof wrapper !== 'string') {
 			throw new TypeError('Expected a `string` as wrapper');
 		}
-		if (typeof previous !== 'boolean') {
-			throw new TypeError('Expected a `boolean` as previous');
+		if (typeof wrapPreviousSibling !== 'boolean') {
+			throw new TypeError('Expected a `boolean` as wrapPreviousSibling');
 		}
 
 		const selectedElements = selectAll(selector, tree);
 
 		for (const element of selectedElements) {
 			visit(tree, element, (_node, i, parent) => {
-				if (previous) {
+				if (wrapPreviousSibling) {
 					const previousSibling: Element | undefined = findBefore(
 						parent as Parent,
 						element,

@@ -7,7 +7,11 @@ import rehypeSiblingWrap from '../lib/index.js';
 
 const transformHTML = (
 	plugin: typeof rehypeSiblingWrap,
-	options: { selector: string; wrapper?: string; previous?: boolean },
+	options: {
+		selector: string;
+		wrapper?: string;
+		wrapPreviousSibling?: boolean;
+	},
 	html: string,
 ) => {
 	return unified()
@@ -58,11 +62,11 @@ test('throw an error if the user provided previous option is not a boolean', asy
 			{
 				selector: 'h1',
 				//@ts-ignore
-				previous: 1,
+				wrapPreviousSibling: 1,
 			},
 			inputHTML,
 		),
-	).toThrowError('Expected a `boolean` as previous');
+	).toThrowError('Expected a `boolean` as wrapPreviousSibling');
 });
 
 test("throw an error if user doesn't provide a selector option", async () => {
@@ -204,7 +208,7 @@ test("a container is not added to elements that don't have a previous sibling", 
 		rehypeSiblingWrap,
 		{
 			selector: 'h1',
-			previous: true,
+			wrapPreviousSibling: true,
 		},
 		inputHTML,
 	);
@@ -220,7 +224,7 @@ test('a container is added to elements that have a previous sibling', async () =
 		rehypeSiblingWrap,
 		{
 			selector: 'h2',
-			previous: true,
+			wrapPreviousSibling: true,
 		},
 		inputHTML,
 	);
@@ -258,7 +262,7 @@ test('multiple selected elements and their previous siblings are wrapped', async
 		{
 			selector: 'figcaption',
 			wrapper: 'figure',
-			previous: true,
+			wrapPreviousSibling: true,
 		},
 		inputHTML,
 	);
