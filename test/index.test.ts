@@ -3,10 +3,10 @@ import rehypeStringify from 'rehype-stringify';
 import { unified } from 'unified';
 import { expect, test } from 'vitest';
 // importing with .js extension to conform with node spec
-import rehypeSiblingWrap from '../lib/index.js';
+import rehypeWrapSibling from '../lib/index.js';
 
 const transformHTML = (
-	plugin: typeof rehypeSiblingWrap,
+	plugin: typeof rehypeWrapSibling,
 	options: {
 		selector: string;
 		wrapper?: string;
@@ -26,7 +26,7 @@ test('throw an error if the user provided selector is not a string', async () =>
 
 	expect(() =>
 		transformHTML(
-			rehypeSiblingWrap,
+			rehypeWrapSibling,
 			{
 				//@ts-ignore
 				selector: 1,
@@ -42,7 +42,7 @@ test('throw an error if the user provided wrapper is not a string', async () => 
 
 	expect(() =>
 		transformHTML(
-			rehypeSiblingWrap,
+			rehypeWrapSibling,
 			{
 				selector: 'h1',
 				//@ts-ignore
@@ -58,7 +58,7 @@ test('throw an error if the user provided previous option is not a boolean', asy
 
 	expect(() =>
 		transformHTML(
-			rehypeSiblingWrap,
+			rehypeWrapSibling,
 			{
 				selector: 'h1',
 				//@ts-ignore
@@ -74,7 +74,7 @@ test("throw an error if user doesn't provide a selector option", async () => {
 
 	expect(() =>
 		transformHTML(
-			rehypeSiblingWrap,
+			rehypeWrapSibling,
 			//@ts-ignore
 			{
 				wrapper: 'div.container',
@@ -89,7 +89,7 @@ test("a container is not added to elements that don't have a sibling", async () 
 	const expectedHTML = '<h1>Lorem</h1>';
 
 	const result = transformHTML(
-		rehypeSiblingWrap,
+		rehypeWrapSibling,
 		{
 			selector: 'h1',
 		},
@@ -104,7 +104,7 @@ test('a container is added to elements that have a sibling', async () => {
 	const expectedHTML = '<div><h1>Lorem</h1><h2>Ipsum</h2></div>';
 
 	const result = transformHTML(
-		rehypeSiblingWrap,
+		rehypeWrapSibling,
 		{
 			selector: 'h1',
 		},
@@ -120,7 +120,7 @@ test('a provided user class in the wrapper option is added to the container', as
 		'<div class="container"><h1>Lorem</h1><h2>Ipsum</h2></div>';
 
 	const result = transformHTML(
-		rehypeSiblingWrap,
+		rehypeWrapSibling,
 		{
 			selector: 'h1',
 			wrapper: 'div.container',
@@ -137,7 +137,7 @@ test('a provided user class in the selector targets the correct element', async 
 		'<div><h1 class="heading">Lorem</h1><h2>Ipsum</h2></div>';
 
 	const result = transformHTML(
-		rehypeSiblingWrap,
+		rehypeWrapSibling,
 		{
 			selector: '.heading',
 			wrapper: 'div',
@@ -153,7 +153,7 @@ test('a HTML comment between siblings is removed, and the elements are wrapped',
 	const expectedHTML = '<div><h1>Lorem</h1><h2>Ipsum</h2></div>';
 
 	const result = transformHTML(
-		rehypeSiblingWrap,
+		rehypeWrapSibling,
 		{
 			selector: 'h1',
 			wrapper: 'div',
@@ -190,7 +190,7 @@ test('multiple selected elements and their respective siblings are wrapped', asy
 </blockquote></figure>`;
 
 	const result = transformHTML(
-		rehypeSiblingWrap,
+		rehypeWrapSibling,
 		{
 			selector: 'figcaption',
 			wrapper: 'figure',
@@ -206,7 +206,7 @@ test("a container is not added to elements that don't have a previous sibling", 
 	const expectedHTML = '<h1>Lorem</h1>';
 
 	const result = transformHTML(
-		rehypeSiblingWrap,
+		rehypeWrapSibling,
 		{
 			selector: 'h1',
 			wrapPreviousSibling: true,
@@ -222,7 +222,7 @@ test('a container is added to elements that have a previous sibling', async () =
 	const expectedHTML = '<div><h1>Lorem</h1><h2>Ipsum</h2></div>';
 
 	const result = transformHTML(
-		rehypeSiblingWrap,
+		rehypeWrapSibling,
 		{
 			selector: 'h2',
 			wrapPreviousSibling: true,
@@ -259,7 +259,7 @@ test('multiple selected elements and their previous siblings are wrapped', async
 </blockquote><figcaption><b>Edsger Dijkstra:</b></figcaption></figure>`;
 
 	const result = transformHTML(
-		rehypeSiblingWrap,
+		rehypeWrapSibling,
 		{
 			selector: 'figcaption',
 			wrapper: 'figure',

@@ -3,7 +3,7 @@ import { selectAll } from 'hast-util-select';
 import { findAfter } from 'unist-util-find-after';
 import { findBefore } from 'unist-util-find-before';
 import { visit } from 'unist-util-visit';
-const rehypeSiblingWrap = (options) => {
+const rehypeWrapSibling = (options) => {
 	const selector = options.selector;
 	const wrapper = options.wrapper ?? 'div';
 	const wrapPreviousSibling = options.wrapPreviousSibling ?? false;
@@ -73,4 +73,4 @@ const rehypeSiblingWrap = (options) => {
 		}
 	};
 };
-export default rehypeSiblingWrap;
+export default rehypeWrapSibling;
