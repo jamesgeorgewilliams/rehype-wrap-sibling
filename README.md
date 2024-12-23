@@ -1,6 +1,6 @@
-# rehype-sibling-wrap
+# rehype-wrap-sibling
 
-![build](https://github.com/jamesgeorgewilliams/rehype-sibling-wrap/workflows/main/badge.svg)
+![build](https://github.com/jamesgeorgewilliams/rehype-wrap-sibling/workflows/main/badge.svg)
 
 A [rehype](https://github.com/rehypejs/rehype?tab=readme-ov-file#plugins) plugin to wrap a selected element and its
 sibling in a container element.
@@ -12,7 +12,7 @@ sibling in a container element.
 ## Installation
 
 ```
-npm i rehype-sibling-wrap
+npm i rehype-wrap-sibling
 ```
 
 ## Usage
@@ -20,13 +20,13 @@ npm i rehype-sibling-wrap
 ```
 import * as fs from 'node:fs/promises';
 import { rehype } from 'rehype';
-import rehypeSiblingWrap from 'rehype-sibling-wrap';
+import rehypeWrapSibling from 'rehype-wrap-sibling';
 
 const document = await fs.readFile('./input.html', 'utf8');
 
 const file = await rehype()
 	.data('settings', { fragment: true })
-	.use(rehypeSiblingWrap, {
+	.use(rehypeWrapSibling, {
 		selector: 'h1',
 		wrapper: 'hgroup#document-title',
 	})
