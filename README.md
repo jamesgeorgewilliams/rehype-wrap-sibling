@@ -53,7 +53,8 @@ await fs.writeFile('./output.html', String(file));
 Name | Type | Description
 ---|---|---
 selector | string | CSS selector to select an element(s)
-wrapper| string? | Element to wrap the selected element and its next sibling
+wrapper | string? | Element to wrap the selected element and its next sibling
+wrapPreviousSibling | boolean? | If `true`, the selected element(s), and its previous sibling are wrapped
 
 - If no `wrapper` option is provided by the user, the default container element will be `<div></div>`.
 - The `selector` option can be a CSS selector supported
