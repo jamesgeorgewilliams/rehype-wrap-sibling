@@ -6,11 +6,11 @@ import { findAfter } from 'unist-util-find-after';
 import { findBefore } from 'unist-util-find-before';
 import { visit } from 'unist-util-visit';
 
-interface rehypeWrapSiblingOptions {
+type rehypeWrapSiblingOptions = {
 	selector: string;
 	wrapper?: string;
 	wrapPreviousSibling?: boolean;
-}
+};
 
 const rehypeWrapSibling: Plugin<[rehypeWrapSiblingOptions], Root> = (
 	options,
