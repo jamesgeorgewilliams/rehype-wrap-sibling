@@ -5,20 +5,22 @@ import { expect, test } from 'vitest';
 // importing with .js extension to conform with node spec
 import rehypeWrapSibling from '../lib/index.js';
 
+type rehypeWrapSiblingOptions = {
+	selector: string;
+	wrapper?: string;
+	wrapPreviousSibling?: boolean;
+};
+
 const transformHTML = (
 	plugin: typeof rehypeWrapSibling,
-	options: {
-		selector: string;
-		wrapper?: string;
-		wrapPreviousSibling?: boolean;
-	},
+	options: rehypeWrapSiblingOptions,
 	html: string,
 ) => {
 	return unified()
 		.use(rehypeParse, { fragment: true })
 		.use(rehypeStringify)
 		.use(plugin, options)
-		.processSync(html);
+		.processSync(html).value;
 };
 
 test('throw an error if the user provided selector is not a string', async () => {
@@ -96,7 +98,7 @@ test("a container is not added to elements that don't have a sibling", async () 
 		inputHTML,
 	);
 
-	expect(result.value).toBe(expectedHTML);
+	expect(result).toBe(expectedHTML);
 });
 
 test('a container is added to elements that have a sibling', async () => {
@@ -111,7 +113,7 @@ test('a container is added to elements that have a sibling', async () => {
 		inputHTML,
 	);
 
-	expect(result.value).toBe(expectedHTML);
+	expect(result).toBe(expectedHTML);
 });
 
 test('a provided user class in the wrapper option is added to the container', async () => {
@@ -128,7 +130,7 @@ test('a provided user class in the wrapper option is added to the container', as
 		inputHTML,
 	);
 
-	expect(result.value).toBe(expectedHTML);
+	expect(result).toBe(expectedHTML);
 });
 
 test('a provided user class in the selector targets the correct element', async () => {
@@ -145,7 +147,7 @@ test('a provided user class in the selector targets the correct element', async 
 		inputHTML,
 	);
 
-	expect(result.value).toBe(expectedHTML);
+	expect(result).toBe(expectedHTML);
 });
 
 test('a HTML comment between siblings is removed, and the elements are wrapped', async () => {
@@ -161,7 +163,7 @@ test('a HTML comment between siblings is removed, and the elements are wrapped',
 		inputHTML,
 	);
 
-	expect(result.value).toBe(expectedHTML);
+	expect(result).toBe(expectedHTML);
 });
 
 test('multiple selected elements and their respective siblings are wrapped', async () => {
@@ -198,7 +200,7 @@ test('multiple selected elements and their respective siblings are wrapped', asy
 		inputHTML,
 	);
 
-	expect(result.value).toBe(expectedHTML);
+	expect(result).toBe(expectedHTML);
 });
 
 test("a container is not added to elements that don't have a previous sibling", async () => {
@@ -214,7 +216,7 @@ test("a container is not added to elements that don't have a previous sibling", 
 		inputHTML,
 	);
 
-	expect(result.value).toBe(expectedHTML);
+	expect(result).toBe(expectedHTML);
 });
 
 test('a container is added to elements that have a previous sibling', async () => {
@@ -230,7 +232,7 @@ test('a container is added to elements that have a previous sibling', async () =
 		inputHTML,
 	);
 
-	expect(result.value).toBe(expectedHTML);
+	expect(result).toBe(expectedHTML);
 });
 
 test('multiple selected elements and their previous siblings are wrapped', async () => {
@@ -268,5 +270,5 @@ test('multiple selected elements and their previous siblings are wrapped', async
 		inputHTML,
 	);
 
-	expect(result.value).toBe(expectedHTML);
+	expect(result).toBe(expectedHTML);
 });
