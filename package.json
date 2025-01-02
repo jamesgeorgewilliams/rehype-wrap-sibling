@@ -1,7 +1,7 @@
 {
 	"name": "rehype-wrap-sibling",
 	"version": "1.0.0",
-	"description": "Rehype plugin to wrap a selected element and its next sibling element in a container element.",
+	"description": "Rehype plugin to wrap a selected element and its sibling in a container element.",
 	"author": "James Williams (https://jameswilliams.dev)",
 	"keywords": [
 		"rehype",
