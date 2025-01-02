@@ -7,17 +7,19 @@ sibling in a container element.
 
 - The plugin will wrap all occurrences of the provided selector and its sibling if one exists.
 - HTML comments between the selected element and its sibling element will not be preserved.
-- The plugin does not prettify output. Whitespace and line endings are not inserted, etc.
+- The plugin doesn't prettify output of the wrapper: whitespace, line endings, etc.
 
 ## Installation
 
-```
+```sh
 npm i rehype-wrap-sibling
 ```
 
 ## Usage
 
-```
+```js
+/* example.js */
+
 import * as fs from 'node:fs/promises';
 import { rehype } from 'rehype';
 import rehypeWrapSibling from 'rehype-wrap-sibling';
@@ -35,16 +37,16 @@ const file = await rehype()
 await fs.writeFile('./output.html', String(file));
 ```
 
-#### input.html
+```html
+<!-- input.html -->
 
-```
 <h1>HTML: Living Standard</h1>
 <p>Last Updated: 16 July 2022</p>
 ```
 
-#### output.html
+```html
+<!-- output.html -->
 
-```
 <hgroup id="document-title"><h1>HTML: Living Standard</h1><p>Last Updated: 16 July 2022</p></hgroup>
 ```
 
