@@ -1,4 +1,4 @@
-import type { Element, Parent, Root } from 'hast';
+import type { Parent, Root } from 'hast';
 import { parseSelector } from 'hast-util-parse-selector';
 import { selectAll } from 'hast-util-select';
 import type { Plugin } from 'unified';
@@ -35,7 +35,7 @@ const rehypeWrapSibling: Plugin<[rehypeWrapSiblingOptions], Root> = (
 		for (const element of selectedElements) {
 			visit(tree, element, (_node, i, parent) => {
 				if (wrapPreviousSibling) {
-					const previousSibling: Element | undefined = findBefore(
+					const previousSibling = findBefore(
 						parent as Parent,
 						element,
 						'element',
