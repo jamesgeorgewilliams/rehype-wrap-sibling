@@ -16,8 +16,9 @@
 		"unified"
 	],
 	"type": "module",
-	"main": "dist/lib/index.js",
-	"types": "dist/lib/index.d.ts",
+	"main": "./dist/lib/index.js",
+	"exports": "./dist/lib/index.js",
+	"types": "./dist/lib/index.d.ts",
 	"scripts": {
 		"build": "tsc --project tsconfig.build.json",
 		"ci": "npm run build && npm run lint:check && npm run check:exports && npm run test",
