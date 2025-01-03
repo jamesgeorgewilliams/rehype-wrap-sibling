@@ -33,7 +33,7 @@ const file = await rehype()
 	.data('settings', { fragment: true })
 	.use(rehypeWrapSibling, {
 		selector: 'h1',
-		wrapper: 'hgroup#document-title',
+		wrapper: 'hgroup#doc-title',
 	})
 	.process(document);
 
@@ -44,13 +44,13 @@ await fs.writeFile('./output.html', String(file));
 <!-- input.html -->
 
 <h1>HTML: Living Standard</h1>
-<p>Last Updated: 16 July 2022</p>
+<p>Last Edited: 7 July 2022</p>
 ```
 
 ```html
 <!-- output.html -->
 
-<hgroup id="document-title"><h1>HTML: Living Standard</h1><p>Last Updated: 16 July 2022</p></hgroup>
+<hgroup id="doc-title"><h1>HTML: Living Standard</h1><p>Last Edited: 7 July 2022</p></hgroup>
 ```
 
 ### Options

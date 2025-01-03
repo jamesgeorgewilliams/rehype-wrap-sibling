@@ -8,7 +8,7 @@ const file = await rehype()
 	.data('settings', { fragment: true })
 	.use(rehypeWrapSibling, {
 		selector: 'h1',
-		wrapper: 'hgroup#document-title',
+		wrapper: 'hgroup#doc-title',
 	})
 	.process(document);
 
