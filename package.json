@@ -28,6 +28,7 @@
 		"lint:write": "npx biome check --write .",
 		"check:exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
 		"prepublishOnly": "npm run ci",
+		"changeset:release": "changeset publish",
 		"static": "node example.js"
 	},
 	"files": ["dist/lib"],
