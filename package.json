@@ -31,7 +31,9 @@
 		"changeset:release": "changeset publish",
 		"static": "node example.js"
 	},
-	"files": ["dist/lib"],
+	"files": [
+		"dist/lib"
+	],
 	"homepage": "https://github.com/jamesgeorgewilliams/rehype-wrap-sibling",
 	"bugs": {
 		"url": "https://github.com/jamesgeorgewilliams/rehype-wrap-sibling/issues"
@@ -53,6 +55,7 @@
 	"devDependencies": {
 		"@arethetypeswrong/cli": "^0.17.1",
 		"@biomejs/biome": "^1.9.4",
+		"@changesets/cli": "^2.27.11",
 		"rehype": "^13.0.2",
 		"rehype-parse": "^9.0.1",
 		"rehype-stringify": "^10.0.1",
