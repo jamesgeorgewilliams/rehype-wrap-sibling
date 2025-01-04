@@ -73,15 +73,14 @@ const rehypeWrapSibling: Plugin<[rehypeWrapSiblingOptions], Root> = (
 
 						if (parent && i !== undefined) {
 							parent.children[i] = wrap;
-
 							let deleteCount = 0;
+
 							for (
 								let index = i + 1;
 								index < parent.children.length;
 								index++
 							) {
 								const node = parent.children[index];
-
 								deleteCount++;
 
 								if (node.type === 'element') {
