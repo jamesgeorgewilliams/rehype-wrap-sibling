@@ -1,5 +1,11 @@
 # rehype-wrap-sibling
 
+## 1.0.3
+
+### Patch Changes
+
+- chore(changesets): add compact changelog formatter ([#9](https://github.com/jamesgeorgewilliams/rehype-wrap-sibling/pull/9))
+
 ## 1.0.2
 
 ### Patch Changes
