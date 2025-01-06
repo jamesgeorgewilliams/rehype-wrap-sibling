@@ -1,6 +1,7 @@
 # rehype-wrap-sibling
 
 ![build](https://github.com/jamesgeorgewilliams/rehype-wrap-sibling/workflows/main/badge.svg)
+[![npm version](https://badge.fury.io/js/rehype-wrap-sibling.svg?icon=si%3Anpm)](https://badge.fury.io/js/rehype-wrap-sibling)
 
 A [rehype](https://github.com/rehypejs/rehype?tab=readme-ov-file#plugins) plugin to wrap a selected element and its
 sibling in a container element.
