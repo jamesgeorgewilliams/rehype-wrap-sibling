@@ -9,6 +9,8 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   release:
+    permissions:
+      id-token: write # OpenID Connect token needed for provenance
     name: Release
     runs-on: ubuntu-latest
     steps:
