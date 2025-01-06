@@ -21,7 +21,7 @@
 	"types": "./dist/lib/index.d.ts",
 	"scripts": {
 		"build": "tsc --project tsconfig.build.json",
-		"ci": "npm run build && npm run lint:check && npm run check:exports && npm run test",
+		"ci": "npm run build && npm run lint:check && npm run check:exports && type-coverage && npm run test",
 		"test": "vitest run",
 		"test:watch": "vitest",
 		"lint:check": "npx biome check .",
@@ -60,7 +60,15 @@
 		"rehype": "^13.0.2",
 		"rehype-parse": "^9.0.1",
 		"rehype-stringify": "^10.0.1",
+		"type-coverage": "^2.29.7",
 		"typescript": "^5.7.2",
 		"vitest": "^2.1.8"
+	},
+	"typeCoverage": {
+		"atLeast": 100,
+		"detail": true,
+		"ignoreCatch": true,
+		"ignoreAsAssertion": true,
+		"strict": true
 	}
 }
