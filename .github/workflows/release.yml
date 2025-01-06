@@ -12,6 +12,7 @@ jobs:
     permissions:
       contents: write # Enable permissions for github releases
       id-token: write # OpenID Connect token needed for provenance
+      pull-requests: write
     name: Release
     runs-on: ubuntu-latest
     steps:
