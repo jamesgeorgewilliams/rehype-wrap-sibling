@@ -10,9 +10,9 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 jobs:
   release:
     permissions:
-      contents: write # Enable permissions for github releases
-      id-token: write # OpenID Connect token needed for provenance
-      pull-requests: write
+      contents: write # Enable repo access for github releases, tags, etc
+      id-token: write # Enable workflow to manage ID token needed for npm provenance
+      pull-requests: write # Enable workflow to manage PRs
     name: Release
     runs-on: ubuntu-latest
     steps:
