@@ -1,5 +1,11 @@
 # rehype-wrap-sibling
 
+## 1.0.4
+
+### Patch Changes
+
+- chore: add supported node version minimum ([#12](https://github.com/jamesgeorgewilliams/rehype-wrap-sibling/pull/12))
+
 ## 1.0.3
 
 ### Patch Changes
