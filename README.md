@@ -13,7 +13,7 @@ sibling in a container element.
 
 ## Installation
 
-This package is [ESM only][esm].
+This package is [ESM only][esm]. In Node.js (version 18+), install with [npm][]:
 
 ```sh
 npm i rehype-wrap-sibling
@@ -72,6 +72,8 @@ via [hast-util-parse-selector](https://github.com/syntax-tree/hast-util-parse-se
 
 [MIT](./LICENSE) :copyright: [James Williams][author]
 
-[author]: https://jameswilliams.dev
+<!-- Definitions -->
 
+[author]: https://jameswilliams.dev
+[npm]: https://docs.npmjs.com/cli/install
 [esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
